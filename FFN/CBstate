@@ -1,0 +1,50 @@
+import os
+import platform #checks what software code is running on
+import logging  #creates a log file for debugging 
+import numpy    #used for camera calibration 
+
+# Chess game state
+cbstate = "" #shared variable for chess move state 
+             #other files use it to detect move types
+
+kingincheck = False #stores whether king is in check 
+
+# Raspberry pi settings
+windowsos = False 
+mydir = "images/" #image folder, might be called something else on our RP
+serialport = '/dev/ttyACM0' #serial port on RP, might need to be changed
+#serialport = '/dev/ttyS0'
+#serialport = '/dev/rfcomm0'
+
+# Camera Settings
+cameraportno = 0  #camera device number
+scale_percent = 100 # percent of original camera image size, if required to make original image smaller to fit screen
+
+# white should be on left of Straightened Image
+rotation = -1   #image does not rotate
+#rotation = 0  #cv2.ROTATE_90_CLOCKWISE 
+#rotation = 1  #cv2.ROTATE_180
+#rotation = 2  #cv2.ROTATE_90_COUNTERCLOCKWISE
+
+# Robot Settings
+motorsareservos = False
+SCARA = True
+
+# Stockfish Settings
+stockfishparams={"Threads": 4} #tells stockfish to use 4 CPU threads 
+
+# Logging
+logging.basicConfig(level=logging.DEBUG, filename = mydir + # need to update this line of code to where log files will be placed at 'chesslog.log', filemode='w', format='%(levelname)s-%(message)s')
+
+#Fisheye camera settings + calibration 
+#most likely dont need but not sure if camera qualfiies as "fish eye"
+fisheye = False 
+# Following for fisheye cameras only. Normally only for IP cameras
+# You should replace these 3 lines with the output from calibrate_fisheye.py
+# We provide the code from https://medium.com/@kennethjiang/calibrate-fisheye-lens-using-opencv-333b05afa0b0
+# 3 lines below are for Tapo TC60
+DIM=(1280, 720)
+K=numpy.array([[817.2563502237226, 0.0, 623.8797454131019], [0.0, 817.8633343903235, 383.3817964461323], [0.0, 0.0, 1.0]])
+D=numpy.array([[-0.15014017025387882], [1.3554015587876163], [-11.583862737184841], [29.439951469529348]])
+
+fisheyeimages = "fishimages/
