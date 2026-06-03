@@ -1,3 +1,0 @@
-../Core/Src/StepperMotorDriver.c:25:6:TMC_SPI_Send40	32	static
-../Core/Src/StepperMotorDriver.c:46:6:TMC_Init	16	static
-../Core/Src/StepperMotorDriver.c:72:6:TMC_MoveOneRotationLeft	16	static
