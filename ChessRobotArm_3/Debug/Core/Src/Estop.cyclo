@@ -1,0 +1,2 @@
+../Core/Src/Estop.c:26:6:Emergency_Stop_All	1
+../Core/Src/Estop.c:46:6:Release_From_Emergency	1
