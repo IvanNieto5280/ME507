@@ -1,7 +1,0 @@
-../Core/Src/StepperMotorDriver.c:27:6:TMC_SPI_Send40	32	static
-../Core/Src/StepperMotorDriver.c:47:6:TMC_Init	16	static
-../Core/Src/StepperMotorDriver.c:74:6:TMC_MoveOneRotationLeft	16	static
-../Core/Src/StepperMotorDriver.c:84:6:TMC_Spin1ForwardSpin1Backward	16	static
-../Core/Src/StepperMotorDriver.c:97:6:TMC_RunSlowMotionTest	16	static
-../Core/Src/StepperMotorDriver.c:102:6:TMC_Stop	16	static
-../Core/Src/StepperMotorDriver.c:107:6:TMC_JoystickCommand	48	static

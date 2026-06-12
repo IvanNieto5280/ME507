@@ -1,0 +1,49 @@
+# =========================
+# STM32CubeIDE Build Output
+# =========================
+Debug/
+Release/
+Binaries/
+
+# Build artifacts
+*.o
+*.d
+*.su
+*.map
+*.elf
+*.hex
+*.bin
+*.list
+
+# =========================
+# IDE Settings
+# =========================
+.metadata/
+.settings/
+
+# User-specific Eclipse files
+*.launch
+
+# =========================
+# Generated Documentation
+# =========================
+html/
+latex/
+xml/
+doxygen_output/
+
+# Doxygen generated files
+*.tag
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.bak
+*~

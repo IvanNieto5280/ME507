@@ -1,2 +1,0 @@
-../Core/Src/Estop.c:26:6:Emergency_Stop_All	24	static
-../Core/Src/Estop.c:37:6:Release_From_Emergency	24	static
