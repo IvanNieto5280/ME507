@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hardware_0',['Major Hardware',['../index.html#hardware',1,'']]],
-  ['harnessing_1',['Wire Harnessing',['../index.html#wire',1,'']]]
+  ['overall_20debugging_0',['Overall debugging',['../index.html#overall',1,'']]],
+  ['overview_1',['Project Overview',['../index.html#overview',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['major_20hardware_0',['Major Hardware',['../index.html#hardware',1,'']]]
+  ['robot_20arm_20documentation_0',['Chess Robot Arm Documentation',['../index.html',1,'']]]
 ];

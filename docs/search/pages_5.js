@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['implementation_0',['Software Implementation',['../index.html#software',1,'']]]
+  ['pcb_20design_0',['PCB Design',['../index.html#pcb',1,'']]],
+  ['project_20overview_1',['Project Overview',['../index.html#overview',1,'']]]
 ];
