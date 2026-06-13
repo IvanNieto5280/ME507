@@ -167,7 +167,7 @@ var NAVTREEINDEX0 =
 "index.html":[0],
 "index.html#authors":[0,0],
 "index.html#future":[0,5],
-"index.html#overall":[0,4],
+"index.html#lesson":[0,4],
 "index.html#overview":[0,1],
 "index.html#pcb":[0,3],
 "index.html#system":[0,2],

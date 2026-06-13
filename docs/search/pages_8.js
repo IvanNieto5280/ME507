@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['work_0',['Future Work',['../index.html#future',1,'']]]
+  ['system_20architecture_0',['System Architecture',['../index.html#system',1,'']]]
 ];

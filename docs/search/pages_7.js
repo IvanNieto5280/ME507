@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['system_20architecture_0',['System Architecture',['../index.html#system',1,'']]]
+  ['robot_20arm_20documentation_0',['Chess Robot Arm Documentation',['../index.html',1,'']]]
 ];

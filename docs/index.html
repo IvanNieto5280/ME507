@@ -124,10 +124,10 @@ Authors</h1>
 <p>Reynaldo Farias</p>
 <h1 class="doxsection"><a class="anchor" id="overview"></a>
 Project Overview</h1>
-<p>The chess robot arm is a three-axis electromechanical system designed to pick up chess pieces and be able to move them around a chess board. The robot is controlled through two joysticks that allow the user to position the arm in the X, Y, Z directions while operating a servo to grab the chess pieces and drop them. The system consists of three NEMA-17 stepper motors controlled by TMC5160A motion controllers, a servo gripper, an STM32F411 microcontroller, 3d printed materials, and a custom PCB.</p>
+<p>The chess robot arm is a three-axis electromechanical system designed to pick up chess pieces and be able to move them around a chess board. The robot is controlled through two joysticks that allow the user to position the arm in the X, Y, Z directions while operating a servo to grab the chess pieces and drop them.The system consists of three NEMA-17 stepper motors controlled by TMC5160A motion controllers, a servo gripper, an STM32F411 microcontroller, 3d printed materials, and a custom PCB.</p>
 <p> 
 <a href="https://youtube.com/shorts/9AqLv6E1KCE" target="_blank">
-  <img src="ChessRobot.JPG" width="400">
+  <img src="ChessRobotPic.JPG" width="400">
 </a>
 <br>
 <em>Click image to watch the chess robot demo video on Youtube.</em>
@@ -214,28 +214,23 @@ PCB Design</h1>
 <p>For stepper motor control, TMC5160A motion planners were used. Each circuit was identically routed with the exception of the no chip select and the diagnosis lines. The h-bridges received the most space, taking up the most space to ensure that the 2A of current would not heat up the board. The TMC5160A allowed for limit switch connections, which were routed around the h-bridge circuitry and extra lowpass components were added near the limit switch pins to minimize noise in the line. <br  />
 </p>
 <p>In general, this was a four layer PCB, with the first layer a signal plane, the second layer a solid ground plane with a small rift between the buck converter and the rest of the board to be able to minimize the buck converter switching noise from messing with the rest of the circuit, the third layer a power plane, and a fourth layer another signal plane. Any path demanding a significant amount of current got its respective plane with a width larger than calculated from Digikey’s trace width calculator. All decoupling capacitors were placed as close as possible to the chip.</p>
-<h1 class="doxsection"><a class="anchor" id="overall"></a>
-Overall debugging</h1>
+<h1 class="doxsection"><a class="anchor" id="lesson"></a>
+Lessons Learned</h1>
 <p>One of the biggest issues with this project was the overall board bring up. I soldered or reflowed all components by hand. My thought process was to solder all STM32 related components first, test it, then reflow the rest of the board.</p>
 <p>When bringing up STM32, when plugging into 3.3 V, there was no current draw. I plugged in the debugger but it couldn't find the chip. After various debugging steps, I realized I labeled one of my pins wrong and needed to boot the chip in under reset mode and I was able to download a “blink an LED” program onto the chip with still 0mA of current draw.</p>
 <div align="left"> <img src="Rework.jpg" alt="" width="400" class="inline"/> <br  />
  <em> Motion Planner Rework</em> </div><p> After reflowing the entire board, I noticed that my Z-axis motion planner chip was mis-aligned, and after heat gunning and messing with it too many times, I ripped out three traces. Using 32 gauge wire and a through hole capacitor, I was able to connect the right pads and later the Z-axis worked just fine.</p>
 <p>Lastly, after a full reflow, the board would hit the current limit, up to 200 mA. I probed and removed a lot of components, spending easily 6 hours trying to figure out the source of the short (even though the resistance between the 24 V line and ground was around 1k ohms). It turned out, I bought the wrong buck converter with a different pin out and ended up causing unknown behavior. This fried my LDO and made me think that the LDO was the original cause. After ordering the right chip, the board fully worked. After some testing however, the servo was drawing too much current and caused the input to the buck converter to short with the switch node. Currently, the board needs a 24 V power supply and a 5V power supply to work.</p>
 <p>One of the most significant lessons learned during the project was the importance of accounting for manufacturing tolerances when designing. All 3d printed materials were printed using PLA and through a Prusa Core One. Although we were able to print everything with phenomenal quality, tolerance was one thing we struggled with time and again. For example, there are two gears in the middle of the robot on each left and right motor. Looking at them very closely, it is obvious that they are not straight and are warped. Most likely this is due to the threaded screw passing through each gear and through the entire arm. Another example would be the 3d printed housing for the servo gripper. There was not enough room for the servo gripper to rotate the “fingers” of the robot, so we had to cut a piece off from the housing to allow for clearance.</p>
-<p>Another struggle we ran into was picking up the chess pieces with the servo grippers. Initially the servo grippers were accidentally letting the chess pieces slip out of its grip. To overcome this, we used multiple rubber bands and wrapped them around each finger to increase the friction and grip of the “hand”.</p>
+<div align="left"> <img src="CR1.jpg" alt="" width="400" class="inline"/> <br  />
+ <em> Model of Chess Robot Arm.</em> </div><p>Another struggle we ran into was picking up the chess pieces with the servo grippers. Initially the servo grippers were accidentally letting the chess pieces slip out of its grip. To overcome this, we used multiple rubber bands and wrapped them around each finger to increase the friction and grip of the “hand”.</p>
 <p>Another lesson learned was in the controller design. There were a couple of tolerance mistakes that made it difficult for the inserts to be put in and the button installation for the estop. In addition, the controller design is large and unergonomic for someone with smaller-average sized hands. In the future, we plan to redesign the controller for a more ergonomic and smaller design.</p>
-<h1 class="doxsection"><a class="anchor" id="future"></a>
+<div align="left"> <img src="CR2.jpg" alt="" width="400" class="inline"/> <br  />
+ <em> Model of Controller to hold the PCB </em> </div> <h1 class="doxsection"><a class="anchor" id="future"></a>
 Future Work</h1>
 <p>The system was complete and was successfully able to carry and place a chess piece, controlled by the user, with no errors or implications. In addition to this, it was successfully demonstrated during the “Mechatronics Demonstration Day” class activity.</p>
 <p>Although we were able to complete our goal, we want to further advance our robot by making it autonomous. To accomplish this, a Raspberry Pi will be used to import a way for the camera to see the chess moves live, using inverse kinematics, and be able to move pieces on its own using Stockfish, which is the most popular, strongest open source chess engine available. Hopefully in due time, the robot will be able to make moves on its own, have multiple difficulty levels, and even a “voice” to promote banter and common chess threats.</p>
-<p>A list of potential future improvements include:</p><ul>
-<li>Automatic chess move generation through Stockfish</li>
-<li>Computer vision for board state recognition</li>
-<li>A “voice” using a speaker</li>
-<li>Multiple difficulties</li>
-<li>A “hint” button</li>
-<li>Smaller/More ergonomic controller </li>
-</ul>
+<p>A list of potential future improvements include: Automatic chess move generation through Stockfish Computer vision for board state recognition A “voice” using a speaker Multiple difficulties A “hint” button Smaller/More ergonomic controller </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
